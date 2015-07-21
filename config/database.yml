@@ -1,0 +1,18 @@
+postgres: &postgres
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  username: postgres
+  password: postgres
+
+development:
+  <<: *postgres
+  database: auth_client_development
+
+test:
+  <<: *postgres
+  database: auth_client_test
+
+production:
+  <<: *postgres
+  database: auth_client_production
