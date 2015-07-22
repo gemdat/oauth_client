@@ -3,20 +3,18 @@ require 'omniauth-oauth2'
 module OmniAuth
   module Strategies
     class TopaxAuth < OmniAuth::Strategies::OAuth2
-      # change the class name and the :name option to match your application name
       option :name, :topax_auth
 
-      option :client_options, {
-                                :site => "http://localhost:3001",
-                                :authorize_url => "/oauth/authorize"
-                            }
+      option :client_options, site: ENV['OAUTH_PROVIDER'],
+                              authorize_url: '/oauth/authorize'
 
-      uid { raw_info["id"] }
+      uid do
+        raw_info['id']
+      end
 
       info do
         {
-            :email => raw_info["email"]
-            # and anything else you want to return to your API consumers
+          email: raw_info['email']
         }
       end
 
