@@ -19,8 +19,9 @@ gem 'omniauth-oauth2'
 group :development, :test do
   gem 'byebug'
   gem 'web-console', '~> 2.0'
-
+  gem 'rubocop'
   gem 'spring'
+  gem 'brakeman'
 end
 
 group :test do
