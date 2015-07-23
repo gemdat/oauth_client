@@ -1,6 +1,8 @@
 class TasksController < ApplicationController
   def index
     @tasks = access_token.get("#{ENV['OAUTH_PROVIDER']}/api/users").parsed
+    puts @tasks.inspect
+    head status: 404 unless @tasks
   end
 
   def create
